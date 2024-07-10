@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from langserve import add_routes
+from retrieval_agent_fireworks import chain as retrieval_agent_fireworks_chain
 
 app = FastAPI()
 
@@ -11,7 +12,8 @@ async def redirect_root_to_docs():
 
 
 # Edit this to add the chain you want to add
-add_routes(app, NotImplemented)
+add_routes(app, retrieval_agent_fireworks_chain, path="/retrieval-agent-fireworks")
+
 
 if __name__ == "__main__":
     import uvicorn
